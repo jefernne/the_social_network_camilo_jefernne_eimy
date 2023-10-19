@@ -33,7 +33,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.siticoneCirclePictureBox1 = new Siticone.Desktop.UI.WinForms.SiticoneCirclePictureBox();
-            this.txtBirthdate = new Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbGender = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.txtConfirmPassword = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.txtUserName = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.cmbPrivacy = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
+            this.txtBirthDay = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneCirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +54,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(301, 3);
             this.panel2.TabIndex = 5;
-            
             // 
             // panel3
             // 
@@ -87,23 +86,6 @@
             this.siticoneCirclePictureBox1.TabIndex = 8;
             this.siticoneCirclePictureBox1.TabStop = false;
             this.siticoneCirclePictureBox1.UseTransparentBackground = true;
-            // 
-            // txtBirthdate
-            // 
-            this.txtBirthdate.AutoRoundedCorners = true;
-            this.txtBirthdate.BorderRadius = 17;
-            this.txtBirthdate.Checked = true;
-            this.txtBirthdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(11)))), ((int)(((byte)(112)))));
-            this.txtBirthdate.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBirthdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.txtBirthdate.Location = new System.Drawing.Point(129, 555);
-            this.txtBirthdate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.txtBirthdate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.txtBirthdate.Name = "txtBirthdate";
-            this.txtBirthdate.Size = new System.Drawing.Size(301, 36);
-            this.txtBirthdate.TabIndex = 9;
-            this.txtBirthdate.Value = new System.DateTime(2023, 10, 1, 14, 51, 48, 178);
             // 
             // label1
             // 
@@ -175,6 +157,7 @@
             this.btnContinue.Size = new System.Drawing.Size(146, 38);
             this.btnContinue.TabIndex = 15;
             this.btnContinue.Text = "Continue";
+            this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
             // 
             // txtEmail
             // 
@@ -284,7 +267,13 @@
             this.cmbPrivacy.StartIndex = 0;
             this.cmbPrivacy.TabIndex = 20;
             this.cmbPrivacy.SelectedIndexChanged += new System.EventHandler(this.cmbPrivacy_SelectedIndexChanged);
-            this.cmbPrivacy.Leave += new System.EventHandler(this.cmbPrivacy_Leave);
+            // 
+            // txtBirthDay
+            // 
+            this.txtBirthDay.Location = new System.Drawing.Point(172, 571);
+            this.txtBirthDay.Name = "txtBirthDay";
+            this.txtBirthDay.Size = new System.Drawing.Size(173, 22);
+            this.txtBirthDay.TabIndex = 22;
             // 
             // Form1
             // 
@@ -292,6 +281,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(464, 809);
+            this.Controls.Add(this.txtBirthDay);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.cmbPrivacy);
             this.Controls.Add(this.txtConfirmPassword);
@@ -302,7 +292,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtBirthdate);
             this.Controls.Add(this.siticoneCirclePictureBox1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -322,7 +311,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private Siticone.Desktop.UI.WinForms.SiticoneCirclePictureBox siticoneCirclePictureBox1;
-        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker txtBirthdate;
         private System.Windows.Forms.Label label1;
         private Siticone.Desktop.UI.WinForms.SiticoneComboBox cmbGender;
         private System.Windows.Forms.Label label2;
@@ -333,6 +321,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtConfirmPassword;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtUserName;
         private Siticone.Desktop.UI.WinForms.SiticoneComboBox cmbPrivacy;
+        private System.Windows.Forms.TextBox txtBirthDay;
     }
 }
 

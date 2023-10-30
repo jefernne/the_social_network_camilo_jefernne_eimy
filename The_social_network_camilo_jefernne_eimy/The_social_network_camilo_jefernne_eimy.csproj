@@ -50,11 +50,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\cConexion.cs" />
+    <Compile Include="Formularios\CambiarPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\CambiarPassword.Designer.cs">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\DeleteAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\DeleteAccount.Designer.cs">
+      <DependentUpon>DeleteAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\InicioSecciión.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\InicioSecciión.Designer.cs">
+      <DependentUpon>InicioSecciión.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\login.cs">
       <SubType>Form</SubType>
@@ -62,10 +80,46 @@
     <Compile Include="Formularios\login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\principal.Designer.cs">
+      <DependentUpon>principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\recuperarPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\recuperarPassword.Designer.cs">
+      <DependentUpon>recuperarPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ChangeEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ChangeEmail.Designer.cs">
+      <DependentUpon>ChangeEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\CambiarPassword.resx">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\DeleteAccount.resx">
+      <DependentUpon>DeleteAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\InicioSecciión.resx">
+      <DependentUpon>InicioSecciión.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\principal.resx">
+      <DependentUpon>principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\recuperarPassword.resx">
+      <DependentUpon>recuperarPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +129,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -89,6 +144,69 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\show.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\esconder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\RedSocia-fotor-2023090920420.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\Registrar\logov3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\Registrar\logov2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\Registrar\Captura de pantalla 2023-10-18 222729.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\Usser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\Password3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\post.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\like.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\dislike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\comentar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\post.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\teams.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\log aut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\changepassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\changeemail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\logos\delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

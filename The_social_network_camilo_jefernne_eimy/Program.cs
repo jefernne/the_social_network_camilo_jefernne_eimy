@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using The_social_network_camilo_jefernne_eimy.Formularios;
 
 namespace The_social_network_camilo_jefernne_eimy
 {
@@ -16,7 +17,7 @@ namespace The_social_network_camilo_jefernne_eimy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new login());
         }
     }
 }

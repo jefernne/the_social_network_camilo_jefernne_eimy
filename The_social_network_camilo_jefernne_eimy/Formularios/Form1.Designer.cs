@@ -32,7 +32,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.siticoneCirclePictureBox1 = new Siticone.Desktop.UI.WinForms.SiticoneCirclePictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbGender = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,8 +42,17 @@
             this.txtConfirmPassword = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.txtUserName = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
             this.cmbPrivacy = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
-            this.txtBirthDay = new System.Windows.Forms.TextBox();
+            this.dtBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.pbOcultar = new System.Windows.Forms.PictureBox();
+            this.pbMostrar1 = new System.Windows.Forms.PictureBox();
+            this.pbMostrar = new System.Windows.Forms.PictureBox();
+            this.siticoneCirclePictureBox1 = new Siticone.Desktop.UI.WinForms.SiticoneCirclePictureBox();
+            this.pbOcultar1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOcultar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMostrar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMostrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneCirclePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOcultar1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -70,22 +78,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(304, 3);
             this.panel4.TabIndex = 7;
-            // 
-            // siticoneCirclePictureBox1
-            // 
-            this.siticoneCirclePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.siticoneCirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneCirclePictureBox1.ErrorImage = null;
-            this.siticoneCirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("siticoneCirclePictureBox1.Image")));
-            this.siticoneCirclePictureBox1.ImageRotate = 0F;
-            this.siticoneCirclePictureBox1.Location = new System.Drawing.Point(159, 19);
-            this.siticoneCirclePictureBox1.Name = "siticoneCirclePictureBox1";
-            this.siticoneCirclePictureBox1.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
-            this.siticoneCirclePictureBox1.Size = new System.Drawing.Size(127, 130);
-            this.siticoneCirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.siticoneCirclePictureBox1.TabIndex = 8;
-            this.siticoneCirclePictureBox1.TabStop = false;
-            this.siticoneCirclePictureBox1.UseTransparentBackground = true;
             // 
             // label1
             // 
@@ -179,6 +171,7 @@
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(330, 36);
             this.txtEmail.TabIndex = 17;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtPassword
             // 
@@ -200,6 +193,7 @@
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(332, 36);
             this.txtPassword.TabIndex = 18;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged_1);
             // 
             // txtConfirmPassword
             // 
@@ -221,6 +215,7 @@
             this.txtConfirmPassword.SelectedText = "";
             this.txtConfirmPassword.Size = new System.Drawing.Size(333, 36);
             this.txtConfirmPassword.TabIndex = 19;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged_1);
             // 
             // txtUserName
             // 
@@ -242,14 +237,16 @@
             this.txtUserName.SelectedText = "";
             this.txtUserName.Size = new System.Drawing.Size(335, 36);
             this.txtUserName.TabIndex = 21;
+            this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
             // 
             // cmbPrivacy
             // 
+            this.cmbPrivacy.AllowDrop = true;
             this.cmbPrivacy.AutoRoundedCorners = true;
             this.cmbPrivacy.BackColor = System.Drawing.Color.Transparent;
             this.cmbPrivacy.BorderColor = System.Drawing.Color.Purple;
             this.cmbPrivacy.BorderRadius = 17;
-            this.cmbPrivacy.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.cmbPrivacy.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
             this.cmbPrivacy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPrivacy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrivacy.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(10)))), ((int)(((byte)(107)))));
@@ -268,12 +265,73 @@
             this.cmbPrivacy.TabIndex = 20;
             this.cmbPrivacy.SelectedIndexChanged += new System.EventHandler(this.cmbPrivacy_SelectedIndexChanged);
             // 
-            // txtBirthDay
+            // dtBirthdate
             // 
-            this.txtBirthDay.Location = new System.Drawing.Point(172, 571);
-            this.txtBirthDay.Name = "txtBirthDay";
-            this.txtBirthDay.Size = new System.Drawing.Size(173, 22);
-            this.txtBirthDay.TabIndex = 22;
+            this.dtBirthdate.Location = new System.Drawing.Point(129, 569);
+            this.dtBirthdate.Name = "dtBirthdate";
+            this.dtBirthdate.Size = new System.Drawing.Size(276, 22);
+            this.dtBirthdate.TabIndex = 23;
+            this.dtBirthdate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // pbOcultar
+            // 
+            this.pbOcultar.Image = global::The_social_network_camilo_jefernne_eimy.Properties.Resources.esconder;
+            this.pbOcultar.Location = new System.Drawing.Point(378, 415);
+            this.pbOcultar.Name = "pbOcultar";
+            this.pbOcultar.Size = new System.Drawing.Size(31, 39);
+            this.pbOcultar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbOcultar.TabIndex = 26;
+            this.pbOcultar.TabStop = false;
+            this.pbOcultar.Click += new System.EventHandler(this.pbOcultar_Click);
+            // 
+            // pbMostrar1
+            // 
+            this.pbMostrar1.Image = global::The_social_network_camilo_jefernne_eimy.Properties.Resources.show;
+            this.pbMostrar1.Location = new System.Drawing.Point(378, 493);
+            this.pbMostrar1.Name = "pbMostrar1";
+            this.pbMostrar1.Size = new System.Drawing.Size(31, 35);
+            this.pbMostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMostrar1.TabIndex = 25;
+            this.pbMostrar1.TabStop = false;
+            this.pbMostrar1.Click += new System.EventHandler(this.pbMostrar1_Click);
+            // 
+            // pbMostrar
+            // 
+            this.pbMostrar.Image = global::The_social_network_camilo_jefernne_eimy.Properties.Resources.show;
+            this.pbMostrar.Location = new System.Drawing.Point(378, 415);
+            this.pbMostrar.Name = "pbMostrar";
+            this.pbMostrar.Size = new System.Drawing.Size(31, 39);
+            this.pbMostrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMostrar.TabIndex = 24;
+            this.pbMostrar.TabStop = false;
+            this.pbMostrar.Click += new System.EventHandler(this.pbMostrar_Click);
+            // 
+            // siticoneCirclePictureBox1
+            // 
+            this.siticoneCirclePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.siticoneCirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneCirclePictureBox1.ErrorImage = null;
+            this.siticoneCirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("siticoneCirclePictureBox1.Image")));
+            this.siticoneCirclePictureBox1.ImageRotate = 0F;
+            this.siticoneCirclePictureBox1.Location = new System.Drawing.Point(159, 19);
+            this.siticoneCirclePictureBox1.Name = "siticoneCirclePictureBox1";
+            this.siticoneCirclePictureBox1.ShadowDecoration.Mode = Siticone.Desktop.UI.WinForms.Enums.ShadowMode.Circle;
+            this.siticoneCirclePictureBox1.Size = new System.Drawing.Size(127, 130);
+            this.siticoneCirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.siticoneCirclePictureBox1.TabIndex = 8;
+            this.siticoneCirclePictureBox1.TabStop = false;
+            this.siticoneCirclePictureBox1.UseTransparentBackground = true;
+            // 
+            // pbOcultar1
+            // 
+            this.pbOcultar1.Image = global::The_social_network_camilo_jefernne_eimy.Properties.Resources.esconder;
+            this.pbOcultar1.Location = new System.Drawing.Point(378, 493);
+            this.pbOcultar1.Name = "pbOcultar1";
+            this.pbOcultar1.Size = new System.Drawing.Size(31, 35);
+            this.pbOcultar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbOcultar1.TabIndex = 27;
+            this.pbOcultar1.TabStop = false;
+            this.pbOcultar1.Click += new System.EventHandler(this.pbOcultar1_Click);
             // 
             // Form1
             // 
@@ -281,7 +339,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(464, 809);
-            this.Controls.Add(this.txtBirthDay);
+            this.Controls.Add(this.pbMostrar);
+            this.Controls.Add(this.pbMostrar1);
+            this.Controls.Add(this.pbOcultar1);
+            this.Controls.Add(this.pbOcultar);
+            this.Controls.Add(this.dtBirthdate);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.cmbPrivacy);
             this.Controls.Add(this.txtConfirmPassword);
@@ -296,11 +358,15 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbOcultar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMostrar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMostrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneCirclePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOcultar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,7 +387,11 @@
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtConfirmPassword;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtUserName;
         private Siticone.Desktop.UI.WinForms.SiticoneComboBox cmbPrivacy;
-        private System.Windows.Forms.TextBox txtBirthDay;
+        private System.Windows.Forms.DateTimePicker dtBirthdate;
+        private System.Windows.Forms.PictureBox pbMostrar;
+        private System.Windows.Forms.PictureBox pbMostrar1;
+        private System.Windows.Forms.PictureBox pbOcultar;
+        private System.Windows.Forms.PictureBox pbOcultar1;
     }
 }
 

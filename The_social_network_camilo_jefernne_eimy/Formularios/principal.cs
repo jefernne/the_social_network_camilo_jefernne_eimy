@@ -138,7 +138,7 @@ namespace The_social_network_camilo_jefernne_eimy.Formularios
                 MessageBox.Show(ex.Message);
             }
 
-}
+        }
 
         private void principal_Load(object sender, EventArgs e)
         {
@@ -164,8 +164,62 @@ namespace The_social_network_camilo_jefernne_eimy.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
+           
             pnlProfile.BringToFront();
             pnlProfile.Visible = true;
+
+
+            String nombre=btnNameUser.Text;
+            cConexion conexion = new cConexion();
+            SqlCommand sqlComando = new SqlCommand(" SELECT IdProfile FROM tblProfile WHERE nameUser ='" + nombre + "'",conexion.AbrirConexion());
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlComando);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            string valor = dt.Rows[0][0].ToString();
+           
+           
+            int id = 0;
+            String numero = valor;
+            if (int.TryParse(numero, out id))
+            {
+                //id = int.Parse(txtBuscarPost.Text);
+
+                string sql = "SELECT  profile FROM tblProfile WHERE idProfile = " + id; // Nota: No es necesario rodear el ID con comillas
+                cConexion cn = new cConexion();
+                cn.AbrirConexion();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(sql, cn.AbrirConexion());
+                    SqlDataReader reader = cmd.ExecuteReader(); // Cambiado "MysqlDataReader" a "SqlDataReader"
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        MemoryStream ms = new MemoryStream((byte[])reader["profile"]);
+                        Bitmap bm = new Bitmap(ms);
+                        pbProfile.Image = bm;
+                        
+                        // Puedes agregar el código para mostrar "post" si es necesario
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron post");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+
+                    cn.CerrarConexion(); // Asegúrate de cerrar la conexión cuando hayas terminado
+                }
+
+            }
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -193,55 +247,100 @@ namespace The_social_network_camilo_jefernne_eimy.Formularios
             this.Hide();
             formulario.Show();
         }
-        
+
         private void txtBuscarPost_TextChanged(object sender, EventArgs e)
         {
 
 
             int id = 0;
-            
-            id = int.Parse(txtBuscarPost.Text);
-
-            string sql = "SELECT nameUser, post FROM tblPost WHERE idPost = " + id; // Nota: No es necesario rodear el ID con comillas
-            cConexion cn = new cConexion();
-            cn.AbrirConexion();
-
-            try
+            if (int.TryParse(txtBuscarPost.Text, out id))
             {
-                SqlCommand cmd = new SqlCommand(sql, cn.AbrirConexion());
-                SqlDataReader reader = cmd.ExecuteReader(); // Cambiado "MysqlDataReader" a "SqlDataReader"
+                //id = int.Parse(txtBuscarPost.Text);
 
-                if (reader.HasRows)
+                string sql = "SELECT nameUser, post FROM tblPost WHERE idPost = " + id; // Nota: No es necesario rodear el ID con comillas
+                cConexion cn = new cConexion();
+                cn.AbrirConexion();
+
+                try
                 {
-                    reader.Read();
-                    MemoryStream ms = new MemoryStream((byte[])reader["post"]);
-                    Bitmap bm = new Bitmap(ms);
-                    pbImagen.Image = bm;
-                    txtDueno.Text = reader["nameUser"].ToString();
-                    // Puedes agregar el código para mostrar "post" si es necesario
+                    SqlCommand cmd = new SqlCommand(sql, cn.AbrirConexion());
+                    SqlDataReader reader = cmd.ExecuteReader(); // Cambiado "MysqlDataReader" a "SqlDataReader"
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        MemoryStream ms = new MemoryStream((byte[])reader["post"]);
+                        Bitmap bm = new Bitmap(ms);
+                        pbImagen.Image = bm;
+                        txtDueno.Text = reader["nameUser"].ToString();
+                        // Puedes agregar el código para mostrar "post" si es necesario
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron post");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No se encontraron post");
+                    MessageBox.Show("Error: " + ex.Message);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-               
-                cn.CerrarConexion(); // Asegúrate de cerrar la conexión cuando hayas terminado
+                finally
+                {
+
+                    cn.CerrarConexion(); // Asegúrate de cerrar la conexión cuando hayas terminado
+                }
+
             }
         }
-
         private void button9_Click(object sender, EventArgs e)
         {
             pnlSettings.Visible = false;
             pnlSettings.SendToBack();
             pnlUserName.BringToFront();
         }
+
+        private void btnChangeProfile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofdSeleccionar = new OpenFileDialog();
+            ofdSeleccionar.Filter = "Imagenes|*.jpg; *.png";
+            ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            ofdSeleccionar.Title = "Selected imagen";
+
+            if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
+            {
+                pbProfile.Image = Image.FromFile(ofdSeleccionar.FileName);
+            }
+            SaveProfile();
+        }
+
+        private void SaveProfile()
+        {
+            int id = contadorMaximo() + 1;
+            MemoryStream ms = new MemoryStream();
+            pbProfile.Image.Save(ms, ImageFormat.Jpeg);
+            byte[] aByte = ms.ToArray();
+
+            cConexion cn = new cConexion();
+
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("insert into  tblProfile values(" + id + ",'" + btnNameUser.Text + "',@imagen)", cn.AbrirConexion());
+                cmd.Parameters.AddWithValue("imagen", aByte);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Imagen guardada");
+                pbProfile.Image = null;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+       
+            
+        
+      
     }   
 
 

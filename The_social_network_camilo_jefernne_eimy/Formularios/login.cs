@@ -127,5 +127,10 @@ namespace The_social_network_camilo_jefernne_eimy.Formularios
                 txtPassword.UseSystemPasswordChar = false;
             }
         }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
